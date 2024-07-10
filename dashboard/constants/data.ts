@@ -112,7 +112,7 @@ export type Employee = {
 
 export const navItems: NavItem[] = [
   {
-    title: 'Home',
+    title: 'Applications',
     href: '/dashboard',
     icon: 'dashboard',
     label: 'Dashboard'
@@ -137,7 +137,7 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'API Keys',
-    href: '/',
+    href: '/dashboard/generate-api',
     icon: 'key',
     label: 'employee'
   },

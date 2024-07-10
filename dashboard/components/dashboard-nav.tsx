@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
+import React from 'react';
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { NavItem } from '@/types';
@@ -14,6 +14,13 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from './ui/tooltip';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from './ui/dropdown-menu';
+import { ArrowUpDown } from 'lucide-react';
 
 interface DashboardNavProps {
   items: NavItem[];
@@ -38,6 +45,23 @@ export function DashboardNav({
   return (
     <nav className="grid items-start gap-2">
       <TooltipProvider>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="px-4 py-2 border-[2px] border-black flex justify-between items-center">
+              <div>Sarthak</div>
+              <ArrowUpDown />
+            </button>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent>
+            <DropdownMenuItem onSelect={() => console.log('Item 1 selected')}>
+              Item 1
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => console.log('Item 2 selected')}>
+              Item 2
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         {items.map((item, index) => {
           const Icon = Icons[item.icon || 'arrowRight'];
           return (

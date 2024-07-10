@@ -18,7 +18,10 @@ import * as z from 'zod';
 import GoogleSignInButton from '../github-auth-button';
 
 const formSchema = z.object({
-  email: z.string().email({ message: 'Enter a valid email address' })
+  email: z.string().email({ message: 'Enter a valid email address' }),
+  password: z
+    .string()
+    .min(6, { message: 'Password must be at least 6 characters' })
 });
 
 type UserFormValue = z.infer<typeof formSchema>;
@@ -28,7 +31,8 @@ export default function UserAuthForm() {
   const callbackUrl = searchParams.get('callbackUrl');
   const [loading, setLoading] = useState(false);
   const defaultValues = {
-    email: 'demo@gmail.com'
+    email: 'demo@gmail.com',
+    password: 'password'
   };
   const form = useForm<UserFormValue>({
     resolver: zodResolver(formSchema),
@@ -36,10 +40,22 @@ export default function UserAuthForm() {
   });
 
   const onSubmit = async (data: UserFormValue) => {
-    signIn('credentials', {
+    setLoading(true);
+    const result = await signIn('credentials', {
       email: data.email,
+      password: data.password,
+      redirect: false,
       callbackUrl: callbackUrl ?? '/dashboard'
     });
+    setLoading(false);
+
+    if (!result?.error) {
+      // Handle successful login
+      window.location.href = callbackUrl ?? '/dashboard';
+    } else {
+      // Handle login error
+      alert(result.error);
+    }
   };
 
   return (
@@ -67,7 +83,24 @@ export default function UserAuthForm() {
               </FormItem>
             )}
           />
-
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Enter your password..."
+                    disabled={loading}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <Button disabled={loading} className="ml-auto w-full" type="submit">
             Continue With Email
           </Button>
