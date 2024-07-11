@@ -32,9 +32,9 @@ const Navbar = () => {
         </Button>
         <Button
           asChild
-          variant={pathname === "/settings" ? "default" : "outline"}
+          variant={pathname === "/dashboard/settings" ? "default" : "outline"}
         >
-          <Link href="/settings">Settings</Link>
+          <Link href="/dashboard/settings">Settings</Link>
         </Button>
       </div>
       <UserButton />

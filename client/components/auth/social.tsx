@@ -12,11 +12,6 @@ import { useToast } from "../ui/use-toast";
 
 export const Social = () => {
   const { toast } = useToast();
-
-  const [wallet, setWallet] = useState<{
-    publicKey: string;
-    privateKey: string;
-  } | null>(null);
   const [loading, setLoading] = useState(false);
 
   const onClick = (provider: "google" | "github" | "twitch") => {
@@ -24,36 +19,6 @@ export const Social = () => {
       {
         callbackUrl: DEFAULT_LOGIN_REDIRECT,
       };
-    handleCreateWallet();
-  };
-
-  const handleCreateWallet = async () => {
-    setLoading(true);
-    try {
-      const newWallet = createNewWallet();
-      if (newWallet) {
-        setWallet(newWallet);
-        toast({
-          title: "Wallet Created",
-          description: `Public Key: ${newWallet.publicKey}`,
-        });
-      } else {
-        toast({
-          title: "Creation Failed",
-          description: "Failed to create a new wallet",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      console.error("Failed to create wallet", error);
-      toast({
-        title: "Error",
-        description: "An error occurred while creating the wallet",
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
@@ -82,7 +47,6 @@ export const Social = () => {
       >
         <FaTwitch className="w-5 h-5" />
       </Button>
-      <button onClick={createNewWallet}>Generate</button>
     </div>
   );
 };
