@@ -8,12 +8,15 @@ import {
   Globe,
   Layout,
   LayoutDashboard,
-  Megaphone,
+  User2,
   Menu,
   Newspaper,
   Settings,
-  FileCode,
+  Key,
   Github,
+  Palette,
+  WalletCards,
+  KeyRound
 } from "lucide-react";
 import {
   useParams,
@@ -70,10 +73,16 @@ export default function Nav({ children }: { children: ReactNode }) {
           icon: <ArrowLeft width={18} />,
         },
         {
-          name: "Posts",
+          name: "Providers",
           href: `/dashboard/site/${id}`,
           isActive: segments.length === 2,
           icon: <Newspaper width={18} />,
+        },
+        {
+          name: "API Keys",
+          href: `/dashboard/site/${id}`,
+          isActive: segments.includes("api"),
+          icon: <KeyRound width={18} />,
         },
         {
           name: "Analytics",
@@ -117,10 +126,34 @@ export default function Nav({ children }: { children: ReactNode }) {
         icon: <LayoutDashboard width={18} />,
       },
       {
-        name: "Sites",
+        name: "Applications",
         href: "/dashboard/sites",
         isActive: segments[0] === "sites",
         icon: <Globe width={18} />,
+      },
+      {
+        name: "Customization",
+        href: "/customization",
+        isActive: segments[0] == "customization",
+        icon: <Palette width={18} />,
+      },
+      {
+        name: "Embedded Wallets",
+        href: "/embedded",
+        isActive: segments[0] == "embedded",
+        icon: <WalletCards width={18} />,
+      },
+      {
+        name: "Users",
+        href: "/users",
+        isActive: segments[0] == "users",
+        icon: <User2 width={18} />,
+      },
+      {
+        name: "API Keys",
+        href: "/api",
+        isActive: segments[0] == "api",
+        icon: <Key width={18} />,
       },
       {
         name: "Settings",
