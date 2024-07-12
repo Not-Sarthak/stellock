@@ -12,7 +12,7 @@
     "@albedo-link/intent": "^0.12.0",
     "@auth/prisma-adapter": "^2.2.0",
     "@hookform/resolvers": "^3.6.0",
-    "@prisma/client": "^5.15.0",
+    "@prisma/client": "^5.16.2",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-context": "^1.1.0",
@@ -44,7 +44,7 @@
     "react-icons": "^5.2.1",
     "react-remove-scroll": "^2.5.10",
     "react-spinners": "^0.13.8",
-    "resend": "^3.3.0",
+    "resend": "^3.4.0",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
@@ -61,7 +61,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
-    "prisma": "^5.15.0",
+    "prisma": "^5.16.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
