@@ -40,7 +40,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       verificationToken.token
     );
 
-    return { error: "Confirmation mail sent!" };
+    return { success: "Confirmation mail sent!" };
   }
 
   if (existingUser.isTwoFactorEnabled && existingUser.email) {

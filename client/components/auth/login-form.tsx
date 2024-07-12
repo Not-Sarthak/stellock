@@ -21,7 +21,8 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { login } from "@/actions/login";
-import ConnectButtons from "../wallets/connect-wallet";
+import ConnectButton from "../wallets/connect-button";
+// import ConnectButtons from "../wallets/connect-wallet";
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
@@ -66,7 +67,7 @@ export const LoginForm = () => {
           }
         })
         .catch(() => {
-          setError("Something went wrong!")
+          setError("Something went wrong!");
         });
     });
   };
@@ -157,15 +158,20 @@ export const LoginForm = () => {
             </Button>
           </form>
         </Form>
+        <div className="flex items-center justify-center mt-4 gap-x-4">
+          <div className="h-[1px] w-20 bg-black"></div>
+          <div className="">OR</div>
+          <div className="h-[1px] w-20 bg-black"></div>
+        </div>
+        <div className="flex justify-center items-center mt-4">
+          <ConnectButton />
+        </div>
+        <div className="flex items-center justify-center mt-4 gap-x-4">
+          <div className="h-[1px] w-20 bg-black"></div>
+          <div className="">OR</div>
+          <div className="h-[1px] w-20 bg-black"></div>
+        </div>
       </CardWrapper>
-      <div className="flex items-center gap-x-4">
-        <div className="h-[1px] w-20 bg-black"></div>
-        <div className="">OR</div>
-        <div className="h-[1px] w-20 bg-black"></div>
-      </div>
-      <div>
-        <ConnectButtons />
-      </div>
     </div>
   );
 };
