@@ -26,10 +26,17 @@ model User {
   accounts              Account[]
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
-  publicKey             String?
-  privateKey            String?
+  Key                   Key?
 
   @@map("users")
+}
+
+model Key {
+  id         String  @id @default(cuid())
+  publicKey  String?
+  privateKey String?
+  userId     String  @unique
+  User       User    @relation(fields: [userId], references: [id])
 }
 
 model Account {

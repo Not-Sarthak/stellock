@@ -50,8 +50,12 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
         name,
         email,
         password: hashedPassword,
-        publicKey,
-        privateKey,
+        Key: {
+          create: {
+            publicKey,
+            privateKey,
+          },
+        },
       },
     });
     console.log("New User:", newUser);

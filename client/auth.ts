@@ -21,14 +21,22 @@ export const {
       const newWallet = createNewWallet();
       if (newWallet) {
         const { publicKey, privateKey } = newWallet;
-        await db.user.update({
-          where: { id: user.id },
-          data: {
-            emailVerified: new Date(),
-            publicKey,
-            privateKey,
-          },
-        });
+        try {
+          await db.user.update({
+            where: { id: user.id },
+            data: {
+              emailVerified: new Date(),
+              Key: {
+                create: {
+                  privateKey,
+                  publicKey,
+                },
+              },
+            },
+          });
+        } catch (e) {
+          console.log(e);
+        }
       } else {
         console.error("Failed to create a new wallet");
       }
