@@ -1,4 +1,10 @@
-import { NavItem } from '@/types';
+export interface NavItem {
+  title: string;
+  href: string;
+  icon: string;
+  label: string;
+  disabled?: boolean;
+}
 
 export type User = {
   id: number;

@@ -19,7 +19,7 @@ const breadcrumbItems = [
   { title: 'Dashboard', link: '/dashboard' },
   { title: 'User', link: '/dashboard/user' }
 ];
-export default function page() {
+export default function DashboardUser() {
   const router = useRouter();
 
   return (

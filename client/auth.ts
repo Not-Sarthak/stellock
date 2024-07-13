@@ -1,4 +1,4 @@
-import NextAuth, { DefaultSession } from "next-auth";
+import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
 import authConfig from "@/auth.config";
@@ -19,8 +19,8 @@ export const {
   events: {
     async linkAccount({ user }) {
       const newWallet = createNewWallet();
-      const { publicKey, privateKey } = createNewWallet();
       if (newWallet) {
+        const { publicKey, privateKey } = newWallet;
         await db.user.update({
           where: { id: user.id },
           data: {

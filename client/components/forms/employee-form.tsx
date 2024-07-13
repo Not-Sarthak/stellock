@@ -165,9 +165,9 @@ export const EmployeeForm: React.FC<ProductFormProps> = ({
                 <FormLabel>Images</FormLabel>
                 <FormControl>
                   <FileUpload
-                    onChange={field.onChange}
-                    value={field.value}
-                    onRemove={field.onChange}
+                    // onChange={field.onChange}
+                    // value={field.value}
+                    // onRemove={field.onChange}
                   />
                 </FormControl>
                 <FormMessage />
